@@ -1,10 +1,11 @@
 import { Button, CircularProgress, TextField } from "@mui/material";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../config" ;
+import { GadgetsContext } from "../contexts";
 
 
-const AddGadgetForm = ({setGadgets}) => {
+const AddGadgetForm = () => {
 
     const [name, setName] = useState("");
     const [price, setPrice] = useState(0);
@@ -14,6 +15,8 @@ const AddGadgetForm = ({setGadgets}) => {
     const [priceError, setPriceError] = useState("");
     const [coverUrlError, setCoverUrlError] = useState("");
     const [loading, setLoading] = useState(false);
+
+    const {setGadgets} = useContext(GadgetsContext);
 
     const onFormSubmit = async (e) => {
         try {

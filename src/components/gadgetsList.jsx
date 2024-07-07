@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { CircularProgress, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
+import { GadgetsContext } from '../contexts';
 
-const GadgetsList = ({ gadgets, loading }) => {
-  if (loading) {
+const GadgetsList = () => {
+
+  const {gadgets, gadgetsLoading} = useContext(GadgetsContext);
+
+  if (gadgetsLoading) {
     return <CircularProgress />;
   }
 
